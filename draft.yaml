@@ -1,0 +1,28 @@
+models:
+  Role:
+    naziv_role: string
+  Status:
+    naziv_statusa: string
+  Soba:
+    broj_sobe: integer
+    tip_sobe: string
+    cena: decimal:8,2
+    status_sobe: string
+  Rezervacija:
+    datum_od: date
+    datum_do: date
+    broj_osoba: integer
+    napomena: text nullable
+    user_id: id foreign:users
+    soba_id: id foreign:sobas
+    status_id: id foreign:statuses
+
+controllers:
+  Role:
+    resource: all
+  Status:
+    resource: all
+  Soba:
+    resource: all
+  Rezervacija:
+    resource: all
