@@ -23,9 +23,12 @@
                 <td class="p-3">{{ $r->status->naziv_statusa }}</td>
                 <td class="p-3">
                   <a href="{{ route('rezervacijas.show',$r) }}" class="px-3 py-1 rounded bg-gray-800 text-white">Detalji</a>
-                  <form action="/rezervacije/{{ $r->id }}/otkazi" method="post" class="inline-block ms-2" onsubmit="return confirm('Otkazati rezervaciju?')">
-                    @csrf
-                    <button class="px-3 py-1 rounded bg-red-600 text-white">Otkaži</button>
+                  <form action="{{ route('rezervacijas.cancel', $r) }}" method="post" class="inline-block ms-2"
+                        onsubmit="return confirm('Otkazati rezervaciju?')">
+                      @csrf
+                      <button class="px-3 py-1 rounded bg-red-600 text-white">Otkaži</button>
+                  </form>
+
                   </form>
                 </td>
               </tr>

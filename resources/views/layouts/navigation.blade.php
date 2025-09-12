@@ -12,8 +12,29 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         Početna
                     </x-nav-link>
+
+                    @auth
+                        @if(in_array(auth()->user()->role?->naziv_role, ['recepcioner','menadzer']))
+                            <x-nav-link :href="route('recepcija.index')" :active="request()->routeIs('recepcija.index')">
+                                Recepcionerski panel
+                            </x-nav-link>
+                            <x-nav-link :href="route('recepcija.rezervacije.create')" :active="request()->routeIs('recepcija.rezervacije.create')">
+                                Dodaj rezervaciju
+                            </x-nav-link>
+                        @endif
+                        @if(auth()->user()->role?->naziv_role === 'gost')
+                            <x-nav-link :href="route('rezervacijas.my')" :active="request()->routeIs('rezervacijas.my')">
+                                Moje rezervacije
+                            </x-nav-link>
+                        @endif
+
+                        @if(in_array(Auth::user()->role->naziv_role, ['menadzer','admin']))
+                            <x-nav-link :href="route('menadzer.sobe.index')" :active="request()->routeIs('menadzer.sobe.*')">
+                                Sobe hotela
+                            </x-nav-link>
+                        @endif
+                    @endauth
                 </div>
-            </div>
 
             @auth
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -53,7 +74,6 @@
                 </div>
             @endguest
 
-            <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
