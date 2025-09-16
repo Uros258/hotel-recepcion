@@ -11,8 +11,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'Milan',
-            'surname' => 'Gost',
+            'name' => 'Luka',
+            'surname' => 'Petrović',
             'email' => 'gost@example.com',
             'phone' => '060111222',
             'password' => Hash::make('password'),
@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Rita',
-            'surname' => 'Recep',
+            'name' => 'Jelena',
+            'surname' => 'Stojanović',
             'email' => 'recepcioner@example.com',
             'phone' => '060222333',
             'password' => Hash::make('password'),
@@ -29,8 +29,8 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Maja',
-            'surname' => 'Men',
+            'name' => 'Darko',
+            'surname' => 'Marković',
             'email' => 'menadzer@example.com',
             'phone' => '060333444',
             'password' => Hash::make('password'),

@@ -1,13 +1,11 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+            <div class="flex-shrink-0 flex items-center">
+                <a href="{{ route('home') }}" class="text-xl font-bold text-blue-600">
+                    HOTEL UROS
                     </a>
-                </div>
-
+                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         Početna
@@ -121,15 +119,18 @@
         @endauth
 
         @guest
-            <div class="pt-4 pb-1 border-t border-gray-200">
-                <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('login')">
-                        Prijava
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('register')">
-                        Registracija
-                    </x-responsive-nav-link>
-                </div>
+            <div class="flex items-center space-x-6">
+                <a href="{{ route('home') }}" class="text-gray-700 hover:text-gray-900">Početna</a>
+                @guest
+                    <a href="{{ route('login') }}" class="text-blue-600 hover:text-blue-800">Prijava</a>
+                    <a href="{{ route('register') }}" class="text-blue-600 hover:text-blue-800">Registracija</a>
+                @else
+                    <a href="{{ route('rezervacijas.my') }}" class="text-gray-700 hover:text-gray-900">Moje rezervacije</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="text-red-600 hover:text-red-800">Logout</button>
+                    </form>
+                @endguest
             </div>
         @endguest
     </div>

@@ -1,0 +1,28 @@
+created:
+    - app/Http/Controllers/RoleController.php
+    - app/Http/Controllers/StatusController.php
+    - app/Http/Controllers/SobaController.php
+    - app/Http/Controllers/RezervacijaController.php
+    - database/factories/RoleFactory.php
+    - database/factories/StatusFactory.php
+    - database/factories/SobaFactory.php
+    - database/factories/RezervacijaFactory.php
+    - database/migrations/2025_09_11_012758_create_roles_table.php
+    - database/migrations/2025_09_11_012759_create_statuses_table.php
+    - database/migrations/2025_09_11_012800_create_sobas_table.php
+    - database/migrations/2025_09_11_012801_create_rezervacijas_table.php
+    - app/Models/Role.php
+    - app/Models/Status.php
+    - app/Models/Soba.php
+    - app/Models/Rezervacija.php
+    - tests/Feature/Http/Controllers/RoleControllerTest.php
+    - tests/Feature/Http/Controllers/StatusControllerTest.php
+    - tests/Feature/Http/Controllers/SobaControllerTest.php
+    - tests/Feature/Http/Controllers/RezervacijaControllerTest.php
+updated:
+    - routes/web.php
+models:
+    Role: { naziv_role: string }
+    Status: { naziv_statusa: string }
+    Soba: { broj_sobe: integer, tip_sobe: string, cena: 'decimal:8,2', status_sobe: string }
+    Rezervacija: { datum_od: date, datum_do: date, broj_osoba: integer, napomena: 'text nullable', user_id: 'id foreign:users', soba_id: 'id foreign:sobas', status_id: 'id foreign:statuses' }
